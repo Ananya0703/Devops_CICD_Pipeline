@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+
+# Set the timeout for expect
+set timeout -1
+
+# Spawn the Docker image build command with sudo
+spawn sudo -S /usr/local/bin/docker image build -t flasktodo .
+
+# Expect the password prompt
+expect "Password:"
+
+# Send your sudo password followed by a carriage return
+send "0703\r"
+
+# Allow interaction with the Docker build process
+interact
